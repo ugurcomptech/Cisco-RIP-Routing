@@ -42,7 +42,41 @@ Router(config-if)#ip address 192.168.10.1 255.255.255.0 // iç network yapıland
 Router(config-if)#no shutdown 
 Router(config-if)# exit
 Router(config)#interface serial 2/0
-Router(config-if)#ip address 10.1.1.1 255.0.0.0 // dış network yapılandırması
+Router(config-if)#ip address 10.1.1.1 255.0.0.0 // İstanbul ile iletişimde olan dış network yapılandırması
+Router(config-if)#no shutdown 
+```
+
+### İstanbul Router
+
+```
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip address 192.168.20.1 255.255.255.0 // iç network yapılandırması
+Router(config-if)#no shutdown 
+Router(config-if)# exit
+Router(config)#interface serial 2/0
+Router(config-if)#ip address 10.1.1.2 255.0.0.0 // Ankara ile iletişimde olan dış network yapılandırması
+Router(config-if)#no shutdown
+Router(config-if)# exit
+Router(config)#interface serial 3/0
+Router(config-if)#ip address 30.1.1.1 255.0.0.0 // İzmir ile iletişimde olan dış network yapılandırması
+Router(config-if)#no shutdown 
+```
+
+### Ankara Router
+
+```
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip address 192.168.30.1 255.255.255.0 // iç network yapılandırması
+Router(config-if)#no shutdown 
+Router(config-if)# exit
+Router(config)#interface serial 3/0
+Router(config-if)#ip address 30.1.1.2 255.0.0.0 // İstanbul ile iletişimde olan dış network yapılandırması
 Router(config-if)#no shutdown 
 ```
 

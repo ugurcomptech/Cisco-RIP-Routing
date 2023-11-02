@@ -4,8 +4,45 @@ Routing Information Protocol (RIP), iki farklı versiyona sahip bir yönlendirme
 
 Ancak, RIP'in bazı dezavantajları vardır. En belirgin dezavantajı, en kısa yolun her zaman en doğru yol olmamasıdır. RIP, maksimum olarak 15 sıçramayı destekler, 16 sıçramadan sonrasında çalışmaz. Ayrıca, yönlendirme güncellemeleri her 30 saniyede bir yapılır, bu da ağ üzerinde gereksiz bir bilgi trafiğine neden olabilir.
 
-Dolayısıyla, RIP, küçük ağlarda kullanılabilir ancak büyük ve karmaşık ağlar için uygun bir seçenek değildir. Yönlendirme bilgisi protokollerinin seçiminde, ağın büyüklüğü ve karmaşıklığı gibi faktörler göz önünde bulundurulmalıdır.
+Şimdi yapılandırmalarımıza başlayalım:
+
+# Network Yapılandırmaları
+
+## PC Yapılandırmaları
+
+- **Ankara Network:**
+  - **Ip Adres:** 192.168.10.10
+  - **Ağ Maskesi:** 255.255.255.0
+  - **Ağ Geçidi:** 192.168.10.1
 
 
+- **İstanbul Network:**
+  - **Ip Adres:** 192.168.20.10
+  - **Ağ Maskesi:** 255.255.255.0
+  - **Ağ Geçidi:** 192.168.20.1
 
+
+- **İzmir Network:**
+  - **Ip Adres:** 192.168.30.10
+  - **Ağ Maskesi:** 255.255.255.0
+  - **Ağ Geçidi:** 192.168.30.1
+
+
+## Router İç ve Dış Network Yapılandırmaları
+
+
+## Ankara Router
+
+```
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#ip address 192.168.10.1 255.255.255.0 // iç network yapılandırması
+Router(config-if)#no shutdown 
+Router(config-if)# exit
+Router(config)#interface serial 2/0
+Router(config-if)#ip address 10.1.1.1 255.0.0.0 // dış network yapılandırması
+Router(config-if)#no shutdown 
+```
 

@@ -80,3 +80,49 @@ Router(config-if)#ip address 30.1.1.2 255.0.0.0 // İstanbul ile iletişimde ola
 Router(config-if)#no shutdown 
 ```
 
+
+Şimdi RIP yapılandırmalarını yapalım:
+
+
+## RIP
+
+### Ankara Router
+
+```
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 192.168.10.0
+Router(config-router)#network 10.1.1.0
+Router(config-router)#no auto-summary 
+Router(config-router)#passive-interface fastEthernet 0/0
+```
+
+
+### İstanbul Router
+
+```
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 192.168.20.0
+Router(config-router)#network 10.1.1.0
+Router(config-router)#network 30.1.1.0
+Router(config-router)#no auto-summary 
+Router(config-router)#passive-interface fastEthernet 0/0
+```
+
+
+
+### İzmir Router
+
+```
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#network 192.168.30.0
+Router(config-router)#network 30.1.1.0
+Router(config-router)#no auto-summary 
+Router(config-router)#passive-interface fastEthernet 0/0
+```
+
+**BİLGİLENDİRME:** "no auto-summary" komutu, RIP'in ağ sınırları arasındaki alt ağları özetlemeyi kapatır ve daha ayrıntılı yönlendirme bilgilerinin kullanılmasına izin verir. "passive-interface" komutu ise belirli bir ağ arabiriminin RIP iletişimine katılmamasını sağlar, bu da iç ağ trafiğini dışarıya sızdırmadan korur ve ağ güvenliğini artırır. Bu komutlar, yönlendirme davranışını özelleştirmek ve ağ güvenliğini sağlamak için kullanılır.
+
+

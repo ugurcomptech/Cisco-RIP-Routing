@@ -65,7 +65,7 @@ Router(config-if)#ip address 30.1.1.1 255.0.0.0 // İzmir ile iletişimde olan d
 Router(config-if)#no shutdown 
 ```
 
-### Ankara Router
+### İzmir Router
 
 ```
 Router>en
